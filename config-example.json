@@ -1,7 +1,7 @@
 {
   "bucketName": "spitzer.io",
-  "accessKeyId": "AKIAIOAJ7QK3BZTLIYYA",
-  "secretAccessKey": "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",
+  "accessKeyId": "XXXX",
+  "secretAccessKey": "XXXXX",
   "region": "us-west-2",
   "folder": "images"
 }
