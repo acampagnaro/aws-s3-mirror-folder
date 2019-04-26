@@ -46,7 +46,7 @@ watcher
   })
 
 async function saveFile(filePath){
-  let fileName = filePath.replace(config.folder,  "");
+  let fileName = "images" + filePath.replace(config.folder,  "");
   fileName = fileName.split('\\');
   fileName = fileName.join("/");
   console.log("Upload Started:", fileName )
