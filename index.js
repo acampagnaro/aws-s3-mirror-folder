@@ -96,3 +96,36 @@ async function deleteFile(filePath){
   });
 }
 
+var params = {
+  Bucket: config.bucketName
+};
+ s3.listObjects(params, function(err, data) {
+   if (err) console.log(err, err.stack); // an error occurred
+   else     console.log(data);           // successful response
+ });
+
+ var params = {
+  Bucket: config.bucketName,
+  Key: "images/IMG_7894.JPG"
+};
+
+const filePath = './temp/IMG_7894.JPG';
+console.log(filePath)
+let file = fs.createWriteStream(filePath);
+// s3.getObject(params, function(err, data) {
+//    if (err) return console.log(err, err.stack); // an error occurred
+//   fs.writeFileSync(filePath, data.Body.toString())
+//   console.log(`${filePath} has been created!`)
+//  });
+
+return new Promise((resolve, reject) => {
+  s3.getObject(params).createReadStream()
+  .on('end', () => {
+      return resolve();
+  })
+  .on('error', (error) => {
+      return reject(error);
+  }).pipe(file);
+});
+
+
